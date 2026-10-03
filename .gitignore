@@ -1,0 +1,77 @@
+# ─── Dependencies ─────────────────────────────────────────────────────
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# ─── Testing ──────────────────────────────────────────────────────────
+/coverage
+
+# ─── Next.js ──────────────────────────────────────────────────────────
+/.next/
+/out/
+
+# ─── Production builds ────────────────────────────────────────────────
+/build
+/dist
+
+# ─── TypeScript ───────────────────────────────────────────────────────
+*.tsbuildinfo
+next-env.d.ts
+
+# ─── Env files ────────────────────────────────────────────────────────
+# Real secrets stay local. The example file is committed.
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ─── Vercel ───────────────────────────────────────────────────────────
+.vercel
+
+# ─── IDEs & editors ───────────────────────────────────────────────────
+.idea/
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+
+# ─── OS files ─────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ─── Logs ─────────────────────────────────────────────────────────────
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+lerna-debug.log*
+
+# ─── Misc ─────────────────────────────────────────────────────────────
+*.pem
+.pnpm-store/
+
+# ─── Backup / scratch ────────────────────────────────────────────────
+*.bak
+*.tmp
+*.orig
+.bak/
+
+# ─── Claude / agent scratch ─────────────────────────────────────
+.claude/settings.local.json
