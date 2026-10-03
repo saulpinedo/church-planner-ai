@@ -12,11 +12,13 @@ import { z } from "zod";
 const schema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
 
-  // ─── Phase 2 · Google OAuth & Calendar ────────────────────────────
-  GOOGLE_CLIENT_ID: z.string().optional(),
-  GOOGLE_CLIENT_SECRET: z.string().optional(),
+  // ─── Phase 2 · Google Calendar (service account) ───────────────────
+  // Single-tenant mode: one Google Calendar shared across the whole app.
+  // For multi-tenant (one calendar per admin) we'll add OAuth user flows
+  // on top of this without changing the CalendarProvider interface.
+  GOOGLE_SERVICE_ACCOUNT_EMAIL: z.string().email().optional(),
+  GOOGLE_SERVICE_ACCOUNT_KEY: z.string().optional(),
   GOOGLE_CALENDAR_ID: z.string().default("primary"),
-  GOOGLE_REDIRECT_URI: z.string().optional(),
 
   // ─── Phase 5 · n8n + Telegram ────────────────────────────────────
   N8N_WEBHOOK_URL: z.string().url().optional(),
