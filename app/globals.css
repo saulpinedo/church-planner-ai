@@ -60,6 +60,7 @@
 
   /* Custom keyframes — one orchestrated page-load motion, no scattered effects */
   --animate-reveal: reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-event-in: event-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes reveal {
@@ -70,6 +71,17 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes event-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 

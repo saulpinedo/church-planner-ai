@@ -4,11 +4,9 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
     <footer className="mt-auto border-t border-border py-8">
-      <div className="container flex flex-col gap-3 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-        <p>
-          {year} · {siteConfig.name} · scaffold inicial · el calendario público llega pronto
-        </p>
-        <p className="font-mono">v{siteConfig.version}</p>
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-5 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <p>{year} · {siteConfig.name} · Próximamente</p>
+        <p className="text-muted-foreground/60">v{siteConfig.version}</p>
       </div>
     </footer>
   );
