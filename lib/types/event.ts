@@ -11,8 +11,13 @@ export interface ChurchEvent {
   title: string;
   description?: string;
   ministry: MinistryId;
-  /** ISO date (YYYY-MM-DD) — calendar-friendly, no timezone. */
+  /** ISO date (YYYY-MM-DD) — calendar-friendly, no timezone. First day of
+   *  the event (or the only day for single-day events). */
   date: string;
+  /** ISO date (YYYY-MM-DD) — last day of the event. Same as `date` for
+   *  single-day events. Optional in the type so legacy single-day data
+   *  still loads. */
+  endDate?: string;
   /** Local time (HH:mm) at the church's timezone. */
   startTime: string;
   /** Local time (HH:mm). */

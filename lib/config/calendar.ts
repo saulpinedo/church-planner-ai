@@ -18,10 +18,10 @@ export interface CalendarProvider {
   deleteEvent(id: string): Promise<void>;
 
   /**
-   * Detect overlapping events in a time range. Phase 7 will consume this.
-   * Optional because not every provider may support efficient conflict queries.
+   * Detect overlapping events in a time range.
+   * The admin UI uses this to warn before saving — never blocks per PRD.
    */
-  findConflicts?(params: {
+  findConflicts(params: {
     from: string;
     to: string;
     excludeId?: string;

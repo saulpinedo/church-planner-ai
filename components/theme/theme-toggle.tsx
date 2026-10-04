@@ -1,15 +1,19 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
+import { Moon, Palette, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
 
 import { Button } from "@/components/ui/button";
 
+type Mode = "light" | "dark" | "colorful";
+
+const ORDER: Mode[] = ["light", "dark", "colorful"];
+
 /**
- * Subscribe to a "did the component mount on the client yet" signal via
- * `useSyncExternalStore`, avoiding the deprecated `useEffect(() => setMounted(true))`
- * pattern (which trips the `react-hooks/set-state-in-effect` rule).
+ * SSR-safe mounted flag. Server snapshot is `false`, client snapshot `true`.
+ * Avoids the `set-state-in-effect` lint rule while preserving the
+ * hydration-mismatch guard.
  */
 function subscribe() {
   return () => {};
@@ -22,30 +26,67 @@ function getServerSnapshot() {
 }
 
 export function ThemeToggle() {
-  const { resolvedTheme, setTheme } = useTheme();
-  const mounted = useSyncExternalStore(subscribe, getClientSnapshot, getServerSnapshot);
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const mounted = useSyncExternalStore(
+    subscribe,
+    getClientSnapshot,
+    getServerSnapshot,
+  );
 
-  const isDark = mounted && resolvedTheme === "dark";
+  // resolvedTheme is "light" or "dark"; "colorful" is detected via the raw
+  // theme value because it doesn't resolve to either.
+  const current = (
+    mounted
+      ? theme === "colorful"
+        ? "colorful"
+        : resolvedTheme
+      : "light"
+  ) as Mode;
+
+  function cycle() {
+    const idx = ORDER.indexOf(current);
+    const next = ORDER[(idx + 1) % ORDER.length];
+    setTheme(next);
+  }
+
+  const label =
+    current === "dark"
+      ? "Cambiar a modo colorido"
+      : current === "colorful"
+        ? "Cambiar a modo claro"
+        : "Cambiar a modo oscuro";
 
   return (
     <Button
       variant="ghost"
       size="icon"
-      aria-label={isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="relative"
+      aria-label={label}
+      onClick={cycle}
+      title={label}
     >
+      {/* Render all three icons; opacity flips based on the active mode. */}
       <Sun
         className={`h-4 w-4 transition-all ${
-          isDark ? "scale-0 opacity-0" : "scale-100 opacity-100"
+          current === "light"
+            ? "scale-100 opacity-100"
+            : "scale-0 opacity-0"
         }`}
       />
       <Moon
         className={`absolute h-4 w-4 transition-all ${
-          isDark ? "scale-100 opacity-100" : "scale-0 opacity-0"
+          current === "dark"
+            ? "scale-100 opacity-100"
+            : "scale-0 opacity-0"
         }`}
       />
-      <span className="sr-only">Cambiar tema</span>
+      <Palette
+        className={`absolute h-4 w-4 transition-all ${
+          current === "colorful"
+            ? "scale-100 opacity-100"
+            : "scale-0 opacity-0"
+        }`}
+      />
+      <span className="sr-only">{label}</span>
     </Button>
   );
 }

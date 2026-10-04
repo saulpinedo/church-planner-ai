@@ -143,4 +143,8 @@ export class MockCalendarProvider implements CalendarProvider {
   async deleteEvent(): Promise<void> {
     throw new Error("Mock provider: deleteEvent is not supported.");
   }
+
+  async findConflicts(): Promise<ChurchEvent[]> {
+    return [];
+  }
 }

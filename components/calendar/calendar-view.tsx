@@ -54,11 +54,12 @@ export function CalendarView({ events, visibleMinistries }: CalendarViewProps) {
     () =>
       visibleEvents.map((e) => {
         const ministry = MINISTRIES.find((m) => m.id === e.ministry);
+        const endDate = e.endDate ?? e.date;
         return {
           id: e.id,
           title: e.title,
           start: `${e.date}T${e.startTime}:00`,
-          end: `${e.date}T${e.endTime}:00`,
+          end: `${endDate}T${e.endTime}:00`,
           backgroundColor: ministry?.color,
           borderColor: ministry?.color,
           textColor: "white",

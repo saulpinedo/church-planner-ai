@@ -32,4 +32,8 @@ export class NotImplementedProvider implements CalendarProvider {
   async deleteEvent(): Promise<void> {
     this.fail("deleteEvent");
   }
+
+  async findConflicts(): Promise<ChurchEvent[]> {
+    this.fail("findConflicts");
+  }
 }

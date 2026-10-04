@@ -43,14 +43,15 @@ import {
   MusicaIcon,
 } from "@/components/ministry-icons";
 
-// Ministry hues live in the 25–165 range so they all harmonize with the
-// moss accent. Saturation/lightness vary to keep each ministry distinguishable
-// without breaking the palette.
+// Ministry hues are spread across the colour wheel so each one is
+// immediately distinguishable. They use low chroma (~0.05–0.13) so they
+// read as elegant rather than saturated-SaaS, and lightness in the 0.4–0.65
+// band so they work in both light and dark mode.
 export const MINISTRIES: readonly Ministry[] = [
   {
     id: "cultos",
     name: "Cultos",
-    color: "oklch(0.5 0.12 145)",
+    color: "oklch(0.4 0.05 145)",
     Icon: CultosIcon,
     description:
       "Servicios de adoración principales: sábado divino, oración de miércoles, vigilias y cultos especiales.",
@@ -58,7 +59,7 @@ export const MINISTRIES: readonly Ministry[] = [
   {
     id: "jovenes",
     name: "Jóvenes",
-    color: "oklch(0.55 0.14 60)",
+    color: "oklch(0.55 0.13 60)",
     Icon: JovenesIcon,
     description:
       "Encuentros juveniles, estudios bíblicos, retiros y actividades de integración para adolescentes y jóvenes adultos.",
@@ -66,7 +67,7 @@ export const MINISTRIES: readonly Ministry[] = [
   {
     id: "musica",
     name: "Música",
-    color: "oklch(0.52 0.1 30)",
+    color: "oklch(0.45 0.12 285)",
     Icon: MusicaIcon,
     description:
       "Ensayos del coro, orquesta y conjuntos. Presentaciones en cultos y eventos especiales de la iglesia.",
@@ -74,7 +75,7 @@ export const MINISTRIES: readonly Ministry[] = [
   {
     id: "conquistadores",
     name: "Conquistadores",
-    color: "oklch(0.58 0.13 85)",
+    color: "oklch(0.55 0.1 35)",
     Icon: ConquistadoresIcon,
     description:
       "Club de aventureros mayores (10-15 años): clases, especialidades, campamentos y eventos de la división.",
@@ -82,7 +83,7 @@ export const MINISTRIES: readonly Ministry[] = [
   {
     id: "aventureros",
     name: "Aventureros",
-    color: "oklch(0.6 0.13 105)",
+    color: "oklch(0.65 0.13 110)",
     Icon: AventurerosIcon,
     description:
       "Club para niños de 4 a 9 años: manualidades, naturaleza, actividades familiares y eventos del club.",
@@ -90,7 +91,7 @@ export const MINISTRIES: readonly Ministry[] = [
   {
     id: "dorcas",
     name: "Dorcas",
-    color: "oklch(0.55 0.13 25)",
+    color: "oklch(0.6 0.09 5)",
     Icon: DorcasIcon,
     description:
       "Ministerio de acción social y servicio: visitas, ayuda a necesitados, ropería y proyectos comunitarios.",
@@ -98,7 +99,7 @@ export const MINISTRIES: readonly Ministry[] = [
   {
     id: "evangelismo",
     name: "Evangelismo",
-    color: "oklch(0.5 0.14 20)",
+    color: "oklch(0.5 0.08 235)",
     Icon: EvangelismoIcon,
     description:
       "Actividades de alcance público: campañas, seminarios, visitas domiciliarias y eventos de testimonio.",
@@ -106,7 +107,7 @@ export const MINISTRIES: readonly Ministry[] = [
   {
     id: "escuela-sabatica",
     name: "Escuela Sabática",
-    color: "oklch(0.5 0.1 160)",
+    color: "oklch(0.6 0.1 90)",
     Icon: EscuelaSabaticaIcon,
     description:
       "Estudio de la lección trimestral en clases por edad, antes del culto divino del sábado.",

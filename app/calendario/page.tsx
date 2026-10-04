@@ -3,7 +3,7 @@ import { addDays, startOfMonth, endOfMonth } from "date-fns";
 import { CalendarPageClient } from "@/components/calendar/calendar-page-client";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
-import { getCalendarProvider } from "@/lib/providers/calendar";
+import { getPublicCalendarProvider } from "@/lib/providers/calendar";
 
 export const metadata = {
   title: "Calendario",
@@ -17,7 +17,7 @@ export default async function CalendarioPage() {
   const from = startOfMonth(addDays(today, -14));
   const to = endOfMonth(addDays(today, 60));
 
-  const provider = getCalendarProvider();
+  const provider = getPublicCalendarProvider();
   const events = await provider.listEvents({
     from: from.toISOString(),
     to: to.toISOString(),
