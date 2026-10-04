@@ -134,6 +134,14 @@
   color: var(--brand);
   font-weight: 600;
 }
+/* Colorido mode: "today" leans on the violet accent so it's clearly distinct
+   from the eight ministry colors and from the warm yellow plate. */
+.colorful .fc-themed .fc-day-today {
+  background: color-mix(in oklch, var(--brand-accent) 12%, transparent);
+}
+.colorful .fc-themed .fc-day-today .fc-daygrid-day-number {
+  color: var(--brand-accent);
+}
 
 .fc-themed .fc-daygrid-day-events {
   padding: 0.125rem 0.25rem;
@@ -204,6 +212,9 @@
 .fc-themed .fc-timegrid-now-indicator-line {
   border-color: var(--brand);
   border-width: 2px;
+}
+.colorful .fc-themed .fc-timegrid-now-indicator-line {
+  border-color: var(--brand-accent);
 }
 
 /* ── List (agenda) view ──────────────────────────────────────── */

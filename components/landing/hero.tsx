@@ -7,7 +7,11 @@ export function Hero() {
   return (
     <section className="grid gap-14 pt-20 pb-14 sm:pt-28 md:gap-16 md:pt-32 md:pb-20 lg:grid-cols-2 lg:gap-12">
       <div className="flex flex-col items-start gap-7 animate-[reveal_0.7s_cubic-bezier(0.22,1,0.36,1)_both]">
-        <p className="text-sm text-muted-foreground">
+        <p className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+          <span
+            aria-hidden
+            className="h-1.5 w-1.5 rounded-full bg-brand"
+          />
           Plataforma de planificación
         </p>
 

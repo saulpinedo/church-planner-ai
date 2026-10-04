@@ -53,6 +53,9 @@
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
   --color-brand-deep: var(--brand-deep);
+  /* Secondary brand accent — used by the colorful mode for rings and active highlights */
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-accent-foreground: var(--brand-accent-foreground);
 
   --radius-sm: calc(var(--radius) * 0.5);
   --radius-md: var(--radius);
@@ -135,6 +138,8 @@
   --brand: oklch(0.4 0.05 145);
   --brand-foreground: oklch(0.985 0.005 95);
   --brand-deep: oklch(0.28 0.04 145);
+  --brand-accent: oklch(0.4 0.05 145);
+  --brand-accent-foreground: oklch(0.985 0.005 95);
 }
 
 .dark {
@@ -182,43 +187,79 @@
   --brand: oklch(0.65 0.08 145);
   --brand-foreground: oklch(0.16 0.005 80);
   --brand-deep: oklch(0.78 0.07 145);
+  --brand-accent: oklch(0.65 0.08 145);
+  --brand-accent-foreground: oklch(0.16 0.005 80);
 }
 
-/* Colorful mode — boosted brand accent for a more vivid feel.
-   Same hairline paper background as light mode so the calendar and cards
-   stay readable; only the accents get louder. */
+/* ─────────────────────────────────────────────────────────────
+ * COLORIDO — the loud one.
+ *
+ * Claro reads as paper + ink + moss; oscuro reads as ink + moss on ink.
+ * Colorido reads as a sunny, multi-colored world. The surface itself
+ * stops being neutral and becomes part of the picture — so the calendar
+ * stops looking like an accent on white and starts looking like the
+ * point.
+ *
+ * Two brand colors instead of one: a hot pink anchor (--brand) and an
+ * electric violet accent (--brand-accent). The chrome leans on the pink;
+ * rings, focus, and "today" highlights lean on the violet.
+ * ───────────────────────────────────────────────────────────── */
 .colorful {
-  --background: oklch(0.985 0.005 95);
-  --foreground: oklch(0.18 0.005 80);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.005 80);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.005 80);
-  --primary: oklch(0.18 0.005 80);
-  --primary-foreground: oklch(0.985 0.005 95);
-  --secondary: oklch(0.96 0.005 95);
-  --secondary-foreground: oklch(0.18 0.005 80);
-  --muted: oklch(0.96 0.005 95);
-  --muted-foreground: oklch(0.5 0.01 80);
-  --accent: oklch(0.96 0.005 95);
-  --accent-foreground: oklch(0.18 0.005 80);
-  --destructive: oklch(0.55 0.2 27);
-  --border: oklch(0.91 0.008 90);
-  --input: oklch(0.91 0.008 90);
-  --ring: oklch(0.42 0.18 330);
-  --brand: oklch(0.42 0.18 330);
-  --brand-foreground: oklch(0.985 0.005 95);
-  --brand-deep: oklch(0.55 0.2 30);
+  /* Warm sunny canvas — the loudest surface we ship. */
+  --background: oklch(0.96 0.08 95);
+  --foreground: oklch(0.18 0.06 320);
 
-  /* Vivid sidebar palette in the colorful mode. */
-  --sidebar: oklch(0.985 0.005 95);
-  --sidebar-foreground: oklch(0.18 0.005 80);
-  --sidebar-primary: oklch(0.42 0.18 330);
-  --sidebar-primary-foreground: oklch(0.985 0.005 95);
-  --sidebar-accent: oklch(0.96 0.005 95);
-  --sidebar-accent-foreground: oklch(0.18 0.005 80);
-  --sidebar-border: oklch(0.91 0.008 90);
-  --sidebar-ring: oklch(0.42 0.18 330);
+  /* Cards stay white: islands of calm so the multi-colored grid reads with structure. */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.06 320);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.06 320);
+
+  --primary: oklch(0.18 0.06 320);
+  --primary-foreground: oklch(0.99 0.04 95);
+
+  /* Secondary surfaces pick up a hint of the lemon so chrome feels in-on-it. */
+  --secondary: oklch(0.93 0.1 95);
+  --secondary-foreground: oklch(0.22 0.08 320);
+
+  --muted: oklch(0.93 0.08 95);
+  --muted-foreground: oklch(0.42 0.05 320);
+
+  --accent: oklch(0.93 0.1 95);
+  --accent-foreground: oklch(0.22 0.08 320);
+
+  --destructive: oklch(0.6 0.22 25);
+  /* Hairline borders pick up a warm pinkish tint, not cool grey. */
+  --border: oklch(0.88 0.08 80);
+  --input: oklch(0.88 0.08 80);
+  /* Violet ring — distinct from the pink brand so focus is visible against it. */
+  --ring: oklch(0.55 0.22 295);
+
+  /* ── Brand: hot pink anchor + electric violet accent ──────────── */
+  --brand: oklch(0.6 0.25 5);
+  --brand-foreground: oklch(0.99 0.02 95);
+  --brand-deep: oklch(0.48 0.23 350);
+  --brand-accent: oklch(0.55 0.24 295);
+  --brand-accent-foreground: oklch(0.99 0.02 95);
+
+  /* Chart slots repurpose the eight ministry hues at boosted chroma —
+     so any chart in this mode visually rhymes with the calendar grid. */
+  --chart-1: oklch(0.6 0.22 5);
+  --chart-2: oklch(0.62 0.2 60);
+  --chart-3: oklch(0.55 0.22 295);
+  --chart-4: oklch(0.6 0.2 145);
+  --chart-5: oklch(0.6 0.2 235);
+
+  /* Header / sidebar share the sunny plate — chrome is in on the look. */
+  --sidebar: oklch(0.96 0.08 95);
+  --sidebar-foreground: oklch(0.18 0.06 320);
+  --sidebar-primary: oklch(0.6 0.25 5);
+  --sidebar-primary-foreground: oklch(0.99 0.02 95);
+  --sidebar-accent: oklch(0.93 0.1 95);
+  --sidebar-accent-foreground: oklch(0.22 0.08 320);
+  --sidebar-border: oklch(0.88 0.08 80);
+  --sidebar-ring: oklch(0.55 0.24 295);
 }
 
 @layer base {
@@ -241,4 +282,20 @@
       transition-duration: 0.001ms !important;
     }
   }
+}
+
+/* Colorido flourish: a soft warm gradient at the very top of the page
+   so the mode change is unmissable. The hairline border picks up the
+   pink brand so the header chrome is in-on-it. Zero cost in claro/oscuro.
+   background-color is re-declared so it can't be clobbered by Tailwind's
+   `background:` shorthand from the base layer. */
+.colorful body {
+  background-color: oklch(0.96 0.08 95);
+  background-image: linear-gradient(
+        to bottom,
+        oklch(0.97 0.1 75) 0%,
+        oklch(0.96 0.08 95) 280px,
+        oklch(0.96 0.08 95) 100%
+      );
+  background-attachment: fixed;
 }
